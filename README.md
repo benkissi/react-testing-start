@@ -7,7 +7,7 @@
   - If you want to go above and beyond, you can add other features or use another list that you receive from an async query, as long as it still meets all the same requirements when the `colorsList` is passed as the `list` prop.
 
 ## Submitting your Project
-- Send us the link to a public repository with your project submission.
+- Send the link to a public repository with your project submission to your recruitment contact.
 
 #### Things we like to see
 
