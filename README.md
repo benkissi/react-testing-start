@@ -4,6 +4,10 @@
 - Using React and CSS, create a `Typeahead` component that takes a `list` prop.
 - Use the `colorsList` list defined in `src/index.js` as the value for the `list` prop.
   - Please do not change `colorsList` or its contents.
+  - If you want to go above and beyond, you can add other features or use another list that you receive from an async query, as long as it still meets all the same requirements when the `colorsList` is passed as the `list` prop.
+
+## Submitting your Project
+- Send us the link to a public repository with your project submission.
 
 #### Things we like to see
 
