@@ -17,6 +17,8 @@ function App() {
     filteredColors: [],
   };
 
+  let inputRef = React.createRef()
+
   useEffect(() => {
       dispatch(setColors(colorsList))
   }, [])
@@ -29,14 +31,15 @@ function App() {
   }, [dispatch]);
 
   const handleItemClick = (value) => {
-      console.log('item click', value)
     dispatch(setSearchField(value))
+    inputRef.current.focus()
   }
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
         <div className={styles.title}>Search Colors</div>
-        <Input placeholder="Type color" onInputChange={getInputValue} value={state.search}/>
+        <Input placeholder="Type color" onInputChange={getInputValue} value={state.search} ref={inputRef}/>
         <List>
           {state.filteredColors.map((color, index) => {
             return <ListItem key={index} item={color} click={handleItemClick} searchField={state.search}/>;
