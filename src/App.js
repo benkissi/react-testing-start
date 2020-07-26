@@ -6,7 +6,7 @@ import ListItem from "./components/list-item";
 import { colorsList } from "./constants/colors";
 
 import { reducer } from "./AppReducer";
-import {updateSearch, setColors, setSearchField} from "./AppActions"
+import {updateSearch, setColors, setSearchField, clearFilter} from "./AppActions"
 
 import styles from "./App.module.css";
 
@@ -35,8 +35,18 @@ function App() {
     inputRef.current.focus()
   }
 
+  const handleCloseList = (event) => {
+      const {id} = event.target
+
+      if(id === 'App'){
+        inputRef.current.focus()
+        dispatch(clearFilter())
+      }
+    
+  }
+
   return (
-    <div className={styles.wrapper}>
+    <div id="App" className={styles.wrapper} onClick={handleCloseList}>
       <div className={styles.content}>
         <div className={styles.title}>Search Colors</div>
         <Input placeholder="Type color" onInputChange={getInputValue} value={state.search} ref={inputRef}/>

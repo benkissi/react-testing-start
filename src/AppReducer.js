@@ -27,6 +27,11 @@ export function reducer(state, action) {
             search: action.payload,
             filteredColors:[]
         }
+    case TYPES.CLEAR_FILTER:
+        return {
+            ...state,
+            filteredColors: []
+        }
     default:
         return state
   }
