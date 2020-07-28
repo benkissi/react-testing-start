@@ -6,7 +6,7 @@ import styles from "./List.module.css";
 function List({children}) {
     
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} data-testid='list'>
       {children}
     </div>
   );

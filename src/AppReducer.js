@@ -14,7 +14,6 @@ export function reducer(state, action) {
         filtered = state.colors.filter((color) =>
           color.toLowerCase().includes(payload.toLowerCase())
         );
-        console.log("filtered", state);
       }
       return {
         ...state,

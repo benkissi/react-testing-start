@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 import styles from "./ListItem.module.css";
 
 function ListItem({ item, click, searchField }) {
-  let boldText = item;
+  let text = item;
   const regex = new RegExp("(" + searchField + ")", "i");
-  boldText = boldText.replace(regex, "<b>$1</b>");
+  text = text.replace(regex, "<b>$1</b>");
 
   const handleButtonPress = ({key}) => {
     if(key === 'Enter'){
@@ -15,8 +15,8 @@ function ListItem({ item, click, searchField }) {
   }
 
   return (
-    <div className={styles.wrapper} onClick={() => click(item)} tabIndex={0} onKeyPress={handleButtonPress}>
-      <div dangerouslySetInnerHTML={{ __html: boldText }} />
+    <div className={styles.wrapper} onClick={() => click(item)} tabIndex={0} onKeyPress={handleButtonPress} aria-label="list item">
+      <div dangerouslySetInnerHTML={{ __html: text }} />
     </div>
   );
 }
