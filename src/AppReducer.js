@@ -19,11 +19,13 @@ export function reducer(state, action) {
         ...state,
         search: action.payload,
         filteredColors: [...filtered],
+        selectionMade: false
       };
     case TYPES.SET_SEARCH_FIELD:
         return {
             ...state,
             search: action.payload,
+            selectionMade: true,
             filteredColors:[]
         }
     case TYPES.CLEAR_FILTER:

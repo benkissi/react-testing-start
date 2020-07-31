@@ -20,6 +20,7 @@ function App() {
     search: "",
     colors: [],
     filteredColors: [],
+    selectionMade: false,
   };
 
   let inputRef = React.createRef();
@@ -51,16 +52,28 @@ function App() {
     }
   };
 
+  const previewColor = state.selectionMade && state.search ? state.search : "";
+
   return (
-    <div id="App" className={styles.wrapper} onClick={handleCloseList} >
+    <div id="App" className={styles.wrapper} onClick={handleCloseList}>
       <div className={styles.content}>
-        <div className={styles.title}>Search Colors</div>
-        <Input
-          placeholder="Type color"
-          onInputChange={getInputValue}
-          value={state.search}
-          ref={inputRef}
-        />
+       
+          <div className={styles.top__inner}>
+            <div className={styles.title}>Search Colors</div>
+            <div
+              className={styles.color__preview}
+              style={{ backgroundColor: previewColor }}
+            >
+              {!state.selectionMade ? "No color selected" : ""}
+            </div>
+            <Input
+              placeholder="Type color"
+              onInputChange={getInputValue}
+              value={state.search}
+              ref={inputRef}
+            />
+          </div>
+
         {state.filteredColors.length ? (
           <List>
             {state.filteredColors.map((color, index) => {

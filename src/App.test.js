@@ -4,6 +4,7 @@ import {
   cleanup,
   queryByTestId,
   fireEvent,
+  getByText,
 } from "@testing-library/react";
 import userEvent from '@testing-library/user-event'
 import "@testing-library/jest-dom/extend-expect";
@@ -141,4 +142,21 @@ describe("App", () => {
     expect(document.activeElement === searchInput).toBeTruthy();
     expect(searchInput.value).toBe(item.textContent);
   });
+
+  test('should show preview of color', () => {
+    const { getByPlaceholderText, getByTestId, getByText,debug } = render(<App />);
+    const searchInput = getByPlaceholderText("Type color");
+    const preview = getByText(/No color selected/)
+    const substring = "Aqu";
+
+    fireEvent.change(searchInput, { target: { value: substring } });
+    const list = getByTestId("list");
+    const listItems = list.querySelectorAll(".wrapper");
+    const item = listItems[0];
+
+    fireEvent.click(item);
+
+    expect(searchInput.value).toBe(item.textContent);
+    expect(preview.style.backgroundColor).toBe(item.textContent);
+  })
 });
