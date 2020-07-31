@@ -12,7 +12,7 @@ import App from "./App";
 
 afterEach(cleanup);
 
-describe("List component", () => {
+describe("App", () => {
   test("hides list item when input is empty", async () => {
     const { container, getByPlaceholderText, debug } = render(<App />);
     const searchInput = getByPlaceholderText("Type color");
@@ -96,6 +96,26 @@ describe("List component", () => {
     userEvent.tab()
     expect(document.activeElement === itemOne).toBeFalsy();
     expect(document.activeElement === itemTwo).toBeTruthy();
+  });
+
+  test("shift tabbing should focus previous item", () => {
+    const { getByPlaceholderText, getByTestId, debug } = render(<App />);
+    const searchInput = getByPlaceholderText("Type color");
+    const substring = "a";
+
+    fireEvent.change(searchInput, { target: { value: substring } });
+
+    const list = getByTestId("list");
+    const listItems = list.querySelectorAll(".wrapper");
+    const itemOne = listItems[0];
+    const itemTwo = listItems[1];
+
+    itemTwo.focus()
+
+    expect(document.activeElement === itemTwo).toBeTruthy();
+    userEvent.tab({shift:true})
+    expect(document.activeElement === itemTwo).toBeFalsy();
+    expect(document.activeElement === itemOne).toBeTruthy();
   });
 
   test("pressing enter on focused item should set search value and close list", () => {

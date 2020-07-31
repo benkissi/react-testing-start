@@ -32,7 +32,6 @@ function App() {
 
   const getInputValue = useCallback(
     (value) => {
-      console.log("input", value);
       dispatch(updateSearch(value));
     },
     [dispatch]
