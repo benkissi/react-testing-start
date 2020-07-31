@@ -67,6 +67,12 @@ input {
   height: 100px;
 }
 
+.list__wrapper {
+  width: 100%;
+  height: 1px;
+  transition: all 2s;
+}
+
 @media screen and (max-width: 600px){
   .content {
     width: 90%;

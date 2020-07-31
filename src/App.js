@@ -1,4 +1,5 @@
 import React, { useCallback, useReducer, useEffect } from "react";
+import { useSpring, animated, config } from "react-spring";
 
 import Input from "./components/input";
 import List from "./components/list";
@@ -24,6 +25,13 @@ function App() {
   };
 
   let inputRef = React.createRef();
+
+  const listAnimation = useSpring({
+    marginTop: 0,
+    from: { marginTop: -500 },
+    config: config.slow,
+    width: "100%"
+  });
 
   useEffect(() => {
     dispatch(setColors(colorsList));
@@ -57,39 +65,44 @@ function App() {
   return (
     <div id="App" className={styles.wrapper} onClick={handleCloseList}>
       <div className={styles.content}>
-       
-          <div className={styles.top__inner}>
+      <animated.div style={listAnimation}>
+        <div className={styles.top__inner}>
             <div className={styles.title}>Search Colors</div>
-            <div
-              className={styles.color__preview}
-              style={{ backgroundColor: previewColor }}
-            >
-              {!state.selectionMade ? "No color selected" : ""}
-            </div>
-            <Input
-              placeholder="Type color"
-              onInputChange={getInputValue}
-              value={state.search}
-              ref={inputRef}
-            />
-          </div>
+          
 
-        {state.filteredColors.length ? (
-          <List>
-            {state.filteredColors.map((color, index) => {
-              return (
-                <ListItem
-                  key={index}
-                  item={color}
-                  click={handleItemClick}
-                  searchField={state.search}
-                />
-              );
-            })}
-          </List>
-        ) : (
-          ""
-        )}
+          <div
+            className={styles.color__preview}
+            style={{ backgroundColor: previewColor }}
+          >
+            {!state.selectionMade ? "No color selected" : ""}
+          </div>
+          <Input
+            placeholder="Type color"
+            onInputChange={getInputValue}
+            value={state.search}
+            ref={inputRef}
+          />
+        </div>
+        </animated.div>
+
+        <div className={styles.list__wrapper}>
+          {state.filteredColors.length ? (
+            <List>
+              {state.filteredColors.map((color, index) => {
+                return (
+                  <ListItem
+                    key={index}
+                    item={color}
+                    click={handleItemClick}
+                    searchField={state.search}
+                  />
+                );
+              })}
+            </List>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
     </div>
   );
