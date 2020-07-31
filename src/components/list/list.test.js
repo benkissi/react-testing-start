@@ -7,9 +7,9 @@ import List from './List'
 afterEach(cleanup)
 
 describe('List component', () => {
-    test('loads and displays list item', () => {
-        const {getByText} = render(<List><p>List item</p></List>)
-        const listItem = getByText(/List item/)
+    test('loads and displays list items', () => {
+        const {getByText} = render(<List listItems={['Aqua', 'Blue', 'Green']}/>)
+        const listItem = getByText(/Aqua/)
         
         expect(listItem).toBeTruthy()
     })

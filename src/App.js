@@ -3,7 +3,6 @@ import { useSpring, animated, config } from "react-spring";
 
 import Input from "./components/input";
 import List from "./components/list";
-import ListItem from "./components/list-item";
 import { colorsList } from "./constants/colors";
 
 import { reducer } from "./AppReducer";
@@ -87,18 +86,7 @@ function App() {
 
         <div className={styles.list__wrapper}>
           {state.filteredColors.length ? (
-            <List>
-              {state.filteredColors.map((color, index) => {
-                return (
-                  <ListItem
-                    key={index}
-                    item={color}
-                    click={handleItemClick}
-                    searchField={state.search}
-                  />
-                );
-              })}
-            </List>
+            <List listItems={state.filteredColors} onItemClick={handleItemClick} search={state.search}/>
           ) : (
             ""
           )}
