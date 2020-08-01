@@ -6,7 +6,7 @@ import ListItem from './ListItem'
 
 afterEach(cleanup)
 
-describe('List item', () => {
+describe('List item component', () => {
     test('loads and displays list item', () => {
         const {getByText} = render(<ListItem/>)
         const listItem = getByText(/ITEM/)

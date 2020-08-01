@@ -9,10 +9,11 @@ export function reducer(state, action) {
       };
     case TYPES.UPDATE_SEARCH:
       let filtered = [];
-      const { payload } = action;
-      if (payload) {
+      const trimmedSearch = action.payload.trim()
+      
+      if (trimmedSearch) {
         filtered = state.colors.filter((color) =>
-          color.toLowerCase().includes(payload.toLowerCase())
+          color.toLowerCase().includes(trimmedSearch.toLowerCase())
         );
       }
       return {
