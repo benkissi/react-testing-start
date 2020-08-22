@@ -1,27 +1,3 @@
-# Project Instructions
-
-- This app is currently in a broken state. You must create your component and add it to `ReactDOM.render` in `src/index.js` to get started.
-- Using React and CSS, create a `Typeahead` component that takes a `list` prop.
-- Use the `colorsList` list defined in `src/index.js` as the value for the `list` prop.
-  - Please do not change `colorsList` or its contents.
-  - If you want to go above and beyond, you can add other features or use another list that you receive from an async query, as long as it still meets all the same requirements when the `colorsList` is passed as the `list` prop.
-
-## Submitting your Project
-- Send the link to a public repository with your project submission to your recruitment contact.
-
-#### Things we like to see
-
-- Use of propTypes and/or other typing systems
-- Responsive design
-- Tasteful styling
-- Tasteful animations are a bonus
-
-#### Things we hope not to see
-
-- Use of styling frameworks (Material, Bootstrap, Tailwind, etc.)
-  - Styling writing libraries and pre-processors (Styled Components, SCSS, etc) are welcome but not expected.
-- Copy/Pasted code from other source code
-
 ## Requirements
 
 1. As the user types in the input field, a list of options should appear below it.

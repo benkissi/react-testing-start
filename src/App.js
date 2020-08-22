@@ -25,11 +25,11 @@ function App() {
 
   let inputRef = React.createRef();
 
-  const listAnimation = useSpring({
+  const animationProps = useSpring({
     marginTop: 0,
     from: { marginTop: -500 },
     config: config.slow,
-    width: "100%"
+    width: "100%",
   });
 
   useEffect(() => {
@@ -64,29 +64,31 @@ function App() {
   return (
     <div id="App" className={styles.wrapper} onClick={handleCloseList}>
       <div className={styles.content}>
-      <animated.div style={listAnimation}>
-        <div className={styles.top__inner}>
+        <div className={styles.top}>
+          <animated.div style={animationProps} className={styles.top__inner}>
             <div className={styles.title}>Search Colors</div>
-          
-
-          <div
-            className={styles.color__preview}
-            style={{ backgroundColor: previewColor }}
-          >
-            {!state.selectionMade ? "No color selected" : ""}
-          </div>
-          <Input
-            placeholder="Type color"
-            onInputChange={getInputValue}
-            value={state.search}
-            ref={inputRef}
-          />
+            <div
+              className={styles.color__preview}
+              style={{ backgroundColor: previewColor }}
+            >
+              {!state.selectionMade ? "No color selected" : ""}
+            </div>
+            <Input
+              placeholder="Type color"
+              onInputChange={getInputValue}
+              value={state.search}
+              ref={inputRef}
+            />
+          </animated.div>
         </div>
-        </animated.div>
 
         <div className={styles.list__wrapper}>
           {state.filteredColors.length ? (
-            <List listItems={state.filteredColors} onItemClick={handleItemClick} search={state.search}/>
+            <List
+              listItems={state.filteredColors}
+              onItemClick={handleItemClick}
+              search={state.search}
+            />
           ) : (
             ""
           )}
